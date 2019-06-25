@@ -188,16 +188,19 @@ public class ScrollGalleryView extends LinearLayout {
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                listener.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if(listener != null)
+                    listener.onPageScrolled(position, positionOffset, positionOffsetPixels);
             }
 
             @Override public void onPageSelected(int position) {
                 scroll(thumbnailsContainer.getChildAt(position));
-                listener.onPageSelected(position);
+                if(listener != null)
+                    listener.onPageSelected(position);
             }
 
             @Override public void onPageScrollStateChanged(int state) {
-                listener.onPageScrollStateChanged(state);
+                if(listener != null)
+                    listener.onPageScrollStateChanged(state);
             }
         });
 
